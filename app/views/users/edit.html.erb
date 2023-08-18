@@ -1,0 +1,15 @@
+<p>アカウント情報の編集</p>
+    <div class="form-body">
+        <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+                <%= message %>
+            </div>
+        <% end %>
+        <%= form_tag("/users/#{@user.id}/update") do %>
+            <p>メールアドレス</p>
+            <input name="mail" value="<%= @user.mail %>">
+            <p>パスワード</p>
+            <input name="password" value="<%= @user.password %>"><br/>
+            <input type="submit" value="保存">
+        <% end %>
+    </div>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>施設名</strong>
+  <%= @room.name_room %>
+</p>
+
+<p>
+  <strong>施設詳細</strong>
+  <%= @room.detail %>
+</p>
+
+<p>
+  <strong>料金</strong>
+  <%= @room.price %>
+</p>
+
+<p>
+  <strong>住所</strong>
+  <%= @room.address %>
+</p>
+
+<p>
+  <strong>施設画像</strong>
+  <%= @room.image_room %>
+</p>
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>
