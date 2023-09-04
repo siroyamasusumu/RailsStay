@@ -1,37 +1,29 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Rooms</h1>
-
+<h1>施設一覧</h1>
 <table>
-  <thead>
-    <tr>
-      <th>施設名</th>
-      <th>紹介文</th>
-      <th>料金</th>
-      <th>住所</th>
-      <th>画像</th>
-      <th>作成者</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th>画像</th>
+            <th>施設名</th>
+            <th>紹介文</th>
+            <th>料金</th>
+            <th>作成日</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @rooms.each do |room| %>
-      <tr>
-        <td><%= room.name_room %></td>
-        <td><%= room.detail %></td>
-        <td><%= room.price %></td>
-        <td><%= room.address %></td>
-        <td><%= room.image_room %></td>
-        <td><%= room.user_id %></td>
-        <td><%= link_to 'Show', room %></td>
-        <td><%= link_to 'Edit', edit_room_path(room) %></td>
-        <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <tr>
+            <td><%= room.image_room %></td>
+            <td><%= room.name_room %></td>
+            <td><%= room.detail %></td>
+            <td><%= room.price %></td>
+            <td><%= room.created_at %></td>
+            <td><%= link_to '参照', "/rooms/#{room.id}" %></td>
+            <td><%= link_to '編集', "/rooms/#{room.id}/edit" %></td>
+            <td><%= button_to '削除', "/rooms/#{room.id}/destroy", { method: :delete, data: { confirm: '本当に削除しますか?'}} %></td>
+        </tr>
     <% end %>
-  </tbody>
+    </tbody>
 </table>
 
-<br>
-
-<%= link_to '施設の新規登録', new_room_path %>

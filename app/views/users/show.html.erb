@@ -1,12 +1,7 @@
-<h1>ユーザー詳細</h1>
+<h1>アカウント</h1>
 <div class="user">
-    <h2><%= @user.name %></h2>
-    <p><%= @user.mail %></p>
-    <p><%= @user.introduce %></p>
-    <p><%= @user.password %></p>
-    <div class="user-img">
-    <img src="<%= "/user_images/#{@user.image}" %>">
-    </div><br/>
-    <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    <p>メールアドレス&emsp;<%= @user.mail %></p>
+    <p>パスワード&emsp;<%= @user.password %></p>
+    <%= link_to("プロフィール", "/users/#{@user.id}/profile") %>
     <%= link_to("プロフィール編集",  "/users/#{@user.id}/profile_edit")%>
 </div>

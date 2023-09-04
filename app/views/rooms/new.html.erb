@@ -1,5 +1,42 @@
 <h1>新規登録</h1>
+<div class="form-body">
+        <% @room.errors.full_messages.each do |message| %>
+            <div class="form-error">
+                <%= message %>
+            </div>
+        <% end %>
+        
+<%= form_with url: rooms_create_path do |f| %>
+<table>
+    <tr>
+        <th>施設名</th>
+        <td><%= f.text_field :name_room %></td>
+    </tr>
 
-<%= render 'form', room: @room %>
+    <tr>
+        <th>施設詳細</th>
+        <td><%= f.text_area :detail %></td>
+    </tr>
 
-<%= link_to 'キャンセル', rooms_path %>
+    <tr>
+        <th>料金</th>
+        <td><%= f.number_field :price %></td>
+    </tr>
+
+    <tr>
+        <th>住所</th>
+        <td><%= f.text_field :address %></td>
+    </tr>
+
+    <tr>
+        <th>施設画像</th>
+        <td><%= f.file_field :image_room %></td>
+    </tr>
+</table>
+
+<div>
+    <ul>
+        <li><%= f.submit "保存" %></li>
+    </ul>
+</div>
+<% end %>

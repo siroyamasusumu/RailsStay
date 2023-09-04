@@ -1,0 +1,12 @@
+<h1>プロフィール</h1>
+<div class="user">
+    <p>アイコン画像</p>
+    <div class="user-img">
+    <img src="<%= "/user_images/#{@user.image}" %>">
+    </div>
+    <p>名前&emsp;<%= @user.name %></p>
+    <p>自己紹介&emsp;<%= @user.introduce %></p>
+    <br/>
+    <%= link_to("アカウント", "/users/#{@user.id}") %>
+    <%= link_to("プロフィール編集",  "/users/#{@user.id}/profile_edit")%>
+</div>

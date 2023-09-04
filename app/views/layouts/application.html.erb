@@ -13,16 +13,17 @@
   <body>
     <header>
         <a href="/top"><p class="icon">Potepan Share</p></a>
-        <li class="header-left">
+        <ul class="header-left">
           <% if @login_user %>
-            <ul><%= link_to(@login_user.name, "/users/#{@login_user.id}", {class: "icon"}) %></ul>
-            <ul><%= button_to("ログアウト", "/logout", {method: "post"}) %></ul>
-            <ul><button type="button" onclick="location.href='/rooms'">施設一覧</button></ul>
+            <li><%= link_to(@login_user.name, "/users/#{@login_user.id}", {class: "icon"}) %></li>
+            <li><%= button_to("ログアウト", "/logout", {method: "post"}) %></li>
+            <li><button type="button" onclick="location.href='/rooms/index'">施設一覧</button></li>
+            <li><button type="button" onclick="location.href='/rooms/new'">施設の新規登録</button></li>
           <% else %>
-            <ul><button type="button" onclick="location.href='/login'">ログイン</button></ul>
-            <ul><button type="button" onclick="location.href='/signup'">新規登録</button></ul>
+            <li><button type="button" onclick="location.href='/login'">ログイン</button></li>
+            <li><button type="button" onclick="location.href='/signup'">新規登録</button></li>
           <% end %>
-        </li>
+        </ul>
     </header>
 
   <% if flash[:notice] %>

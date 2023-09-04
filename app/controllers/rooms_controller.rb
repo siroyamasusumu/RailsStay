@@ -1,71 +1,60 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: %i[ show edit update destroy ]
+protect_from_forgery :except => [:destroy]
 
-  # GET /rooms or /rooms.json
   def index
     @rooms = Room.all
   end
 
-  # GET /rooms/1 or /rooms/1.json
-  def show
-  end
-
-  # GET /rooms/new
   def new
     @room = Room.new
   end
 
-  # GET /rooms/1/edit
-  def edit
-  end
-
-  # POST /rooms or /rooms.json
   def create
-    @room = Room.new(room_params, 
-      user_id: @login_user.id)
-
-    respond_to do |format|
-      if @room.save
-        format.html { redirect_to room_url(@room), notice: "Room was successfully created." }
-        format.json { render :show, status: :created, location: @room }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
+    @room = Room.new(
+      name_room: params[:name_room],
+      detail: params[:detail],
+      price: params[:price],
+      address: params[:address],
+      image_room: params[:image_room],
+      user_id: @login_user.id
+    )
+    if @room.save
+      session[:room_id] = @room.id
+      flash[:notice] = "施設登録が完了しました"
+      redirect_to("/rooms/#{@room.id}")
+    else
+      render("rooms/new")
     end
   end
 
-  # PATCH/PUT /rooms/1 or /rooms/1.json
+  def show
+    @room = Room.find(params[:id])
+  end
+
+  def edit
+    @room = Room.find(params[:id])
+  end
+
   def update
-    respond_to do |format|
-      if @room.update(room_params)
-        format.html { redirect_to room_url(@room), notice: "Room was successfully updated." }
-        format.json { render :show, status: :ok, location: @room }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
-      end
+    @room = Room.find(params[:id])
+    @room.name_room = params[:name_room]
+    @room.detail = params[:detail]
+    @room.price = params[:price]
+    @room.address = params[:address]
+    @room.image_room = params[:image_room]
+    @room.user_id = @login_user.id
+    if @room.save
+      flash[:notice] = "施設情報を編集しました"
+      redirect_to("/rooms/#{@room.id}")
+    else
+      render("rooms/edit")
     end
   end
 
-  # DELETE /rooms/1 or /rooms/1.json
   def destroy
+    @room = Room.find_by(id: params[:id])
     @room.destroy
-
-    respond_to do |format|
-      format.html { redirect_to rooms_url, notice: "Room was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "施設情報を削除しました"
+    redirect_to("/rooms/index")
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_room
-      @room = Room.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def room_params
-      params.require(:room).permit(:name_room, :detail, :price, :address, :image_room, :user_id)
-    end
 end
