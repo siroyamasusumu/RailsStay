@@ -15,10 +15,24 @@
         <a href="/top"><p class="icon">Potepan Share</p></a>
         <ul class="header-left">
           <% if @login_user %>
-            <li><%= link_to(@login_user.name, "/users/#{@login_user.id}", {class: "icon"}) %></li>
-            <li><%= button_to("ログアウト", "/logout", {method: "post"}) %></li>
-            <li><button type="button" onclick="location.href='/rooms/index'">施設一覧</button></li>
-            <li><button type="button" onclick="location.href='/rooms/new'">施設の新規登録</button></li>
+            <input type="checkbox" id="menu-btn-check">
+            <li>
+            <label for="menu-btn-check" class="menu-btn">
+              <div class="user-img-header"><img src="<%= "/user_images/#{@login_user.image}" %>"></div>
+              <%= @login_user.name %>
+            </label>
+            </li>
+            <!--ここからメニュー-->
+            <div class="menu-content">
+            <ul>
+                <li><button type="button" onclick="location.href='/rooms/new'">施設の新規登録</button></li>
+                <li><button type="button" onclick="location.href='/reserves/index'">予約済み一覧</button></li>
+                <li><button type="button" onclick="location.href='/rooms/index'">登録済み一覧</button></li>
+                <li><%= button_to("アカウント設定", "/users/#{@login_user.id}", {method: "get"}) %></li>
+                <li><%= button_to("ログアウト", "/logout", {method: "post"}) %></li>
+            </ul>
+            </div>
+        <!--ここまでメニュー-->
           <% else %>
             <li><button type="button" onclick="location.href='/login'">ログイン</button></li>
             <li><button type="button" onclick="location.href='/signup'">新規登録</button></li>

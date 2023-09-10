@@ -35,9 +35,16 @@ header {
 
 .header-left {
     display: flex;
-    font-size: 18px;
+    font-size: 20px;
 }
 
+.user-img-header {
+    width: 40px;
+    height: 40px;
+    border-radius: 60px;
+    box-shadow: 0 2px 6px #c1ced7;
+    overflow: clip;
+}
 /* 本文 */
 .top-contents {
     text-align: center;
@@ -61,6 +68,34 @@ header {
     display: flex;
     text-align: center;
     justify-content: center;
+    margin-bottom: 10px;
+}
+
+.tokyo {
+    background-color: red;
+    color: white;
+    padding-right: 40px;
+    margin-right: 5px;
+}
+
+.osaka {
+    background-color: #7178a7;
+    color: white;
+    padding-right: 40px;
+    margin-right: 5px;
+}
+
+.kyoto {
+    background-color: green;
+    color: white;
+    padding-right: 40px;
+    margin-right: 5px;
+}
+
+.sapporo {
+    background-color: orchid;
+    color: white;
+    padding-right: 40px;
 }
 
 /* フッター */

@@ -1,8 +1,10 @@
 class RoomsController < ApplicationController
 protect_from_forgery :except => [:destroy]
+before_action :set_q, only: [:index, :search]
 
   def index
     @rooms = Room.all
+    @rooms = Room.where(user_id: @login_user.id)
   end
 
   def new
@@ -29,6 +31,7 @@ protect_from_forgery :except => [:destroy]
 
   def show
     @room = Room.find(params[:id])
+    @reserve = Reserve.new
   end
 
   def edit
@@ -57,4 +60,13 @@ protect_from_forgery :except => [:destroy]
     flash[:notice] = "施設情報を削除しました"
     redirect_to("/rooms/index")
   end
+
+  def search
+    @results = @q.result
+  end
+
+  def set_q
+    @q = Room.ransack(params[:q])
+  end
+
 end

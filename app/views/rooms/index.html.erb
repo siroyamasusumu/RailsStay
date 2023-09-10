@@ -14,12 +14,18 @@
     <tbody>
     <% @rooms.each do |room| %>
         <tr>
-            <td><%= room.image_room %></td>
+            <td>
+                <% if room.image_room.present? %>
+                    <%= image_tag room.image_room %>
+                <% else %>
+                    <%= image_tag 'default-room-image.png', size: '100' %>
+                <% end %>
+            </td>
             <td><%= room.name_room %></td>
             <td><%= room.detail %></td>
             <td><%= room.price %></td>
             <td><%= room.created_at %></td>
-            <td><%= link_to '参照', "/rooms/#{room.id}" %></td>
+            <td><%= link_to '詳細はこちら', "/rooms/#{room.id}" %></td>
             <td><%= link_to '編集', "/rooms/#{room.id}/edit" %></td>
             <td><%= button_to '削除', "/rooms/#{room.id}/destroy", { method: :delete, data: { confirm: '本当に削除しますか?'}} %></td>
         </tr>

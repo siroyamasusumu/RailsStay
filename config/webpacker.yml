@@ -90,3 +90,10 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
+
+  # config/webpacker.yml
+
+  # babel_plugins:
+  #   - @babel/plugin-proposal-private-methods
+
+  babel_plugins: []

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "users/:id/update" => "users#update"
   post "users/:id/profile_update" => "users#profile_update"
 
+  get "rooms/search" => "rooms#search"
   get 'rooms/index' => "rooms#index"
   get "rooms/new" => "rooms#new"
   post "rooms/create" => "rooms#create"
@@ -22,5 +23,14 @@ Rails.application.routes.draw do
   get "rooms/:id/edit" => "rooms#edit"
   post "rooms/:id/update" => "rooms#update"
   delete "rooms/:id/destroy" => "rooms#destroy"
+  get "rooms/search" => "rooms#search"
+
+  post "reserves/create" => "reserves#create"
+  resources :reserves do
+    collection do
+      post "confirm" => "reserves#confirm"
+      get "index" => "reserves#index"
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
