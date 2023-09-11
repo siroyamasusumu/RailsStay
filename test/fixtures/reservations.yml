@@ -11,6 +11,8 @@ one:
   integer: MyString
   user_id: MyString
   integer: MyString
+  total_price: MyString
+  integer: MyString
 
 two:
   start_date: MyString
@@ -22,4 +24,6 @@ two:
   room_id: MyString
   integer: MyString
   user_id: MyString
+  integer: MyString
+  total_price: MyString
   integer: MyString

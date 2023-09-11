@@ -1,27 +1,27 @@
 <h1>予約内容の確認</h1>
-<%= form_with url: reserves_create_path, local: true do |f| %>
+<%= form_with model: @reservation, local: true do |f| %>
 
-    <%= f.hidden_field :start_date, value: @reserve.start_date %>
-    <%= f.hidden_field :end_date, value: @reserve.end_date %>
-    <%= f.hidden_field :people, value: @reserve.people %>
+    <%= f.hidden_field :start_date, value: @reservation.start_date %>
+    <%= f.hidden_field :end_date, value: @reservation.end_date %>
+    <%= f.hidden_field :people, value: @reservation.people %>
     <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.hidden_field :user_id, value: @reserve.user_id %>
-    <%= f.hidden_field :total_price, value: @reserve.total_price %>
+    <%= f.hidden_field :user_id, value: @reservation.user_id %>
+    <%= f.hidden_field :total_price, value: @reservation.total_price %>
 
     <table>
     <tr>
         <th>チェックイン</th>
-        <td><%= @reserve.start_date %></td>
+        <td><%= @reservation.start_date %></td>
     </tr>
 
     <tr>
         <th>チェックアウト</th>
-        <td><%= @reserve.end_date %></td>
+        <td><%= @reservation.end_date %></td>
     </tr>
 
     <tr>
         <th>人数</th>
-        <td><%= @reserve.people %>人</td>
+        <td><%= @reservation.people %>人</td>
     </tr>
 
     <tr>
@@ -31,7 +31,7 @@
 
     <tr>
         <th>お支払い金額</th>
-        <td><%= @reserve.total_price %>円</td>
+        <td><%= @reservation.total_price %>円</td>
     </tr>
     </table>
     <p>下記内容で正しければ「確定」ボタンを押してください。</p>

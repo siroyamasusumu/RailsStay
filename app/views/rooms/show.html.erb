@@ -10,13 +10,13 @@
     <p>詳細&emsp;<%= @room.detail %></p>
 </div>
 
-<% @reserve.errors.each do |message| %>
+<% @reservation.errors.each do |message| %>
     <div class="form-error">
         <%= message.full_message %>
     </div>
 <% end %>
 
-<%= form_with url: confirm_reserves_path , local: true do |f| %>
+<%= form_with url: confirm_reservations_path , local: true do |f| %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <table>
     <tr>

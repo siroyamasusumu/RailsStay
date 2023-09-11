@@ -25,12 +25,19 @@ Rails.application.routes.draw do
   delete "rooms/:id/destroy" => "rooms#destroy"
   get "rooms/search" => "rooms#search"
 
-  post "reserves/create" => "reserves#create"
-  resources :reserves do
+  resources :reservations, except: [:show] do
     collection do
-      post "confirm" => "reserves#confirm"
-      get "index" => "reserves#index"
+      post "confirm" => "reservations#confirm"
+      # get ""  => "reservations#index"
     end
   end
+
+  # post "reserves/create" => "reserves#create"
+  # resources :reserves, except: [:show] do
+  #   collection do
+  #     post "confirm" => "reserves#confirm"
+  #     get "index" => "reserves#index"
+  #   end
+  # end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

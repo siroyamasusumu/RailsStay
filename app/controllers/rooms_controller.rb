@@ -31,7 +31,7 @@ before_action :set_q, only: [:index, :search]
 
   def show
     @room = Room.find(params[:id])
-    @reserve = Reserve.new
+    @reservation = Reservation.new
   end
 
   def edit

@@ -3,7 +3,7 @@ ja:
     models:
       user: ユーザー
       room: 施設
-      reserve: 予約
+      reservation: 予約
     attributes:
       user:
         name: 名前
@@ -17,7 +17,7 @@ ja:
         price: 料金
         address: 住所
         image_room: 画像
-      reserve:
+      reservation:
         start_date: チェックイン
         end_date: チェックアウト
         people: 人数

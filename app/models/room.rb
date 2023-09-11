@@ -1,5 +1,5 @@
 class Room < ApplicationRecord
-    has_many :reserves
+    has_many :reservations
 
     validates :name_room, {presence: true}
     validates :detail, {presence: true}
@@ -11,7 +11,7 @@ class Room < ApplicationRecord
         ["address", "created_at", "detail", "id", "image_room", "name_room", "price", "updated_at", "user_id"]
     end
     def self.ransackable_associations(auth_object = nil)
-        ["reserves"]
+        ["reservations"]
     end
     
 end
