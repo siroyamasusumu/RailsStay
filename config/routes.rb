@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'top' => "home#top"
+  root to: "home#top" 
 
   get "login" => "users#login_form"
   post "login" => "users#login"

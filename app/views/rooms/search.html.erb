@@ -24,8 +24,8 @@
         <% @results.each do |room| %>
             <tr>
                 <td>
-                <% if room.image_room.present? %>
-                    <%= image_tag room.image_room %>
+                <% if room.image_room? %>
+                    <%= image_tag room.image_room.url, size: '100' %>
                 <% else %>
                     <%= image_tag 'default-room-image.png', size: '100' %>
                 <% end %>

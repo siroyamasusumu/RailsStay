@@ -8,7 +8,8 @@
             <th>合計金額</th>
             <th>チェックイン</th>
             <th>チェックアウト</th>
-            <th colspan="2"></th>
+            <th>予約確定日時</th>
+            <th colspan="1"></th>
         </tr>
     </thead>
 
@@ -16,8 +17,8 @@
     <% @reservations.each do |reservation| %>
         <tr>
             <td>
-                <% if reservation.room.image_room.present? %>
-                    <%= image_tag reservation.room.image_room %>
+                <% if reservation.room.image_room? %>
+                    <%= image_tag reservation.room.image_room.url, size: '100' %>
                 <% else %>
                     <%= image_tag 'default-room-image.png', size: '100' %>
                 <% end %>
@@ -27,8 +28,8 @@
             <td><%= reservation.total_price %></td>
             <td><%= reservation.start_date.strftime("%Y/%m/%d") %></td>
             <td><%= reservation.end_date.strftime("%Y/%m/%d") %></td>
-            <td>再予約</td>
-            <td>予約を削除</td>
+            <td><%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %></td>
+            <td><%= link_to '再予約', "/rooms/#{reservation.room_id}" %></td>
         </tr>
     <% end %>
     </tbody>

@@ -7,7 +7,7 @@
             <th>紹介文</th>
             <th>料金</th>
             <th>作成日</th>
-            <th colspan="3"></th>
+            <th colspan="2"></th>
         </tr>
     </thead>
 
@@ -15,8 +15,8 @@
     <% @rooms.each do |room| %>
         <tr>
             <td>
-                <% if room.image_room.present? %>
-                    <%= image_tag room.image_room %>
+                <% if room.image_room? %>
+                    <%= image_tag room.image_room.url, size: '100' %>
                 <% else %>
                     <%= image_tag 'default-room-image.png', size: '100' %>
                 <% end %>
@@ -27,7 +27,6 @@
             <td><%= room.created_at %></td>
             <td><%= link_to '詳細はこちら', "/rooms/#{room.id}" %></td>
             <td><%= link_to '編集', "/rooms/#{room.id}/edit" %></td>
-            <td><%= button_to '削除', "/rooms/#{room.id}/destroy", { method: :delete, data: { confirm: '本当に削除しますか?'}} %></td>
         </tr>
     <% end %>
     </tbody>

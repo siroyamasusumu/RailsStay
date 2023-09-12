@@ -1,6 +1,6 @@
 <div class="room">
-    <% if @room.image_room.present? %>
-        <%= image_tag @room.image_room %>
+    <% if @room.image_room? %>
+        <%= image_tag @room.image_room.url, size: '100' %>
     <% else %>
         <%= image_tag 'default-room-image.png', size:"500x300" %>
     <% end %>
@@ -37,8 +37,10 @@
 </table>
     <% if @login_user %>
         <li><%= f.submit "予約する"%></li>
+        <li><%= link_to "戻る", :back %></li>
     <% else %>
         <li><button type="button" onclick="location.href='/login'">ログイン</button></li>
+        <li><%= link_to "戻る", :back %></li>
     <% end %>
 </ul>
 <% end %>

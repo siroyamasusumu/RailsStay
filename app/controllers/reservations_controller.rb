@@ -1,4 +1,6 @@
 class ReservationsController < ApplicationController
+    protect_from_forgery :except => [:destroy]
+    
     def index
         @reservations = Reservation.all
     end
@@ -26,20 +28,29 @@ class ReservationsController < ApplicationController
 
     def create
         @reservation = Reservation.new(
-            start_date: params[:start_date], #チェックイン
-            end_date: params[:end_date], #チェックアウト
-            people: params[:people], #人数
+            start_date: params[:reservation][:start_date], #チェックイン
+            end_date: params[:reservation][:end_date], #チェックアウト
+            people: params[:reservation][:people], #人数
             user_id: @login_user.id, #ユーザーID
-            total_price: params[:total_price] #合計金額
+            room_id: params[:reservation][:room_id], #ルームID
+            total_price: params[:reservation][:total_price] #合計金額
         )
         # binding.pry
-        if @reservation.save
+        if 
+        @reservation.save
             session[:reservation_id] = @reservation.id
             flash[:notice] = "施設の予約が完了しました。"
             redirect_to reservations_path
         else
             redirect_back fallback_location: "rooms#index"
         end
+    end
+
+    def destroy
+        @reservation = Reservation.find(params[:id])
+        @reservation.destroy
+        flash[:notice] = "ユーザーを削除しました"
+        redirect_to reservations_path
     end
     
 end

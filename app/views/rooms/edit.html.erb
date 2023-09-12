@@ -12,7 +12,7 @@
         <p>詳細</p>
             <textarea name="detail"><%= @room.detail %></textarea>
         <p>料金</p>
-            <input name="price" value="<%= @room.price %>" type="number">
+            <input name="price" value="<%= @room.price,  min: 1 %>" type="number">
         <p>住所</p>
             <input name="address" value="<%= @room.address %>">
         <p>画像</p>
