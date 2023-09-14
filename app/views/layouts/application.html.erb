@@ -15,24 +15,17 @@
         <a href="/"><p class="icon">Potepan Share</p></a>
         <ul class="header-left">
           <% if @login_user %>
-            <input type="checkbox" id="menu-btn-check">
-            <li>
-            <label for="menu-btn-check" class="menu-btn">
-              <img class="user-img-header" src="<%= "/user_images/#{@login_user.image}" %>">
-              <%= @login_user.name %>
-            </label>
-            </li>
-            <!--ここからメニュー-->
-            <div class="menu-content">
-            <ul>
-                <li><button type="button" onclick="location.href='/rooms/new'">施設の新規登録</button></li>
-                <li><button type="button" onclick="location.href='/reservations'", {method: :get}>予約済み一覧</button></li>
-                <li><button type="button" onclick="location.href='/rooms/index'">登録済み一覧</button></li>
-                <li><%= button_to("アカウント設定", "/users/#{@login_user.id}", {method: "get"}) %></li>
-                <li><%= button_to("ログアウト", "/logout", {method: "post"}) %></li>
-            </ul>
-            </div>
-        <!--ここまでメニュー-->
+          <label for="toggle" onclick=""  for="menuToggle">
+                  <img class="user-img-header" src="<%= "/user_images/#{@login_user.image}" %>"><%= @login_user.name %>
+          </label>  
+          <input type="checkbox" id="toggle" autocomplete="off">
+          <ul id="menu">  
+              <li><button type="button" onclick="location.href='/rooms/new'">施設の新規登録</button></li>
+              <li><button type="button" onclick="location.href='/reservations'", {method: :get}>予約済み一覧</button></li>
+              <li><button type="button" onclick="location.href='/rooms/index'">登録済み一覧</button></li>
+              <li><%= button_to("アカウント設定", "/users/#{@login_user.id}", {method: "get"}) %></li>
+              <li><%= button_to("ログアウト", "/logout", {method: "post"}) %></li>
+          </ul>
           <% else %>
             <li><button type="button" onclick="location.href='/login'">ログイン</button></li>
             <li><button type="button" onclick="location.href='/signup'">新規登録</button></li>

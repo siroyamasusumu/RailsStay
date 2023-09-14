@@ -3,5 +3,5 @@
     <p>メールアドレス&emsp;<%= @user.mail %></p>
     <p>パスワード&emsp;<%= @user.password %></p>
     <%= link_to("プロフィール", "/users/#{@user.id}/profile") %>
-    <%= link_to("プロフィール編集",  "/users/#{@user.id}/profile_edit")%>
+    <%= link_to("アカウント編集",  "/users/#{@user.id}/edit")%>
 </div>
