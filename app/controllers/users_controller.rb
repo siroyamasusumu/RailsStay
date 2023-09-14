@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     if @user
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/top")
+      redirect_to("/")
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
       @mail = params[:mail]
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
-    redirect_to("/top")
+    redirect_to("/")
   end
 
 end
