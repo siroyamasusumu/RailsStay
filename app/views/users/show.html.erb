@@ -1,0 +1,7 @@
+<h1>アカウント</h1>
+<div class="user">
+    <p>メールアドレス&emsp;<%= @user.mail %></p>
+    <p>パスワード&emsp;<%= @user.password %></p>
+    <%= link_to("プロフィール", "/users/#{@user.id}/profile") %>
+    <%= link_to("アカウント編集",  "/users/#{@user.id}/edit")%>
+</div>

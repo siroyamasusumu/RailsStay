@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Stay</title>
+    <title>宿泊予約アプリ</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,39 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+        <a href="/"><p class="icon">Potepan Share</p></a>
+        <ul class="header-left">
+          <% if @login_user %>
+          <label for="toggle" onclick=""  for="menuToggle">
+                  <img class="user-img-header" src="<%= "/user_images/#{@login_user.image}" %>"><%= @login_user.name %>
+          </label>  
+          <input type="checkbox" id="toggle" autocomplete="off">
+          <ul id="menu">  
+              <li><button type="button" onclick="location.href='/rooms/new'">施設の新規登録</button></li>
+              <li><button type="button" onclick="location.href='/reservations'", {method: :get}>予約済み一覧</button></li>
+              <li><button type="button" onclick="location.href='/rooms/index'">登録済み一覧</button></li>
+              <li><%= button_to("アカウント設定", "/users/#{@login_user.id}", {method: "get"}) %></li>
+              <li><%= button_to("ログアウト", "/logout", {method: "post"}) %></li>
+          </ul>
+          <% else %>
+            <li><button type="button" onclick="location.href='/login'">ログイン</button></li>
+            <li><button type="button" onclick="location.href='/signup'">新規登録</button></li>
+          <% end %>
+        </ul>
+    </header>
+
+  <% if flash[:notice] %>
+    <div class="flash">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+  <footer>
+    <a href="/top"><p class="icon">Potepan Share</p></a>
+    <small>Copyright&copy;Potepan Share 2023 All rights reserved</small>
+  </footer>
   </body>
 </html>

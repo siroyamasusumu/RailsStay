@@ -1,0 +1,22 @@
+    <div class="top-contents">
+        <h1 class="top">
+            Potepan Shareで<br>
+            まだ体験したことのない<br>
+            旅をしよう
+        </h1>
+        <div class = "serach">
+            <%= search_form_for @q, url: rooms_search_path do |f| %>
+                <%= f.label :address_cont, 'エリア名を入力' %>
+                <%= f.search_field :address_cont %>
+                <br>
+                <%= f.submit '検索' %>
+            <% end %>
+        </div>
+    </div>
+    <h2 class="top-area">おすすめのエリア</h2>
+    <li class="area">
+        <a class="tokyo" href="http://localhost:3000/rooms/search?q%5Baddress_cont%5D=%E6%9D%B1%E4%BA%AC&commit=%E6%A4%9C%E7%B4%A2"><ul>東京<br>Tokyo</ul></a>
+        <a class="osaka" href="http://localhost:3000/rooms/search?q%5Baddress_cont%5D=%E5%A4%A7%E9%98%AA&commit=%E6%A4%9C%E7%B4%A2"><ul>大阪<br>Osaka</ul></a>
+        <a class="kyoto" href="http://localhost:3000/rooms/search?q%5Baddress_cont%5D=%E4%BA%AC%E9%83%BD&commit=%E6%A4%9C%E7%B4%A2"><ul>京都<br>Kyoto</ul></a>
+        <a class="sapporo" href="http://localhost:3000/rooms/search?q%5Baddress_cont%5D=%E6%9C%AD%E5%B9%8C&commit=%E6%A4%9C%E7%B4%A2"><ul>札幌<br>Sapporo</ul></a>
+    </li>

@@ -1,0 +1,14 @@
+<p>ログイン</p>
+<% if @error_message %>
+    <div class="form-error">
+        <%= @error_message %>
+    </div>
+<% end %>
+<%= form_tag("/login") do %>
+<p>メールアドレス</p>
+<input name="mail" value="<%= @mail %>">
+<p>パスワード</p>
+<input type="password" name="password" value="<%= @password %>"><br/>
+<input type="submit" value="ログイン">
+<% end %>
+<button type="button" onclick="location.href='/signup'">新しいアカウントを作成</button>
